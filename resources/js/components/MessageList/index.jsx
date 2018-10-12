@@ -11,7 +11,14 @@ export default class MessageList extends Component {
             <div>
                 {this.props.messages.map((msg) => {
                     return (
-                        <Message text={msg.text}></Message>
+                        <Message
+                            id={msg.id}
+                            text={msg.text}
+                            picture={msg.picture}
+                            displayName={msg.displayName}
+                            username={msg.username}
+                            date={msg.date}
+                        ></Message>
                     )
                 })}
             </div>
