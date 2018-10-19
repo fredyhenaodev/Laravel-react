@@ -11,7 +11,7 @@ export default class Main extends Component {
                 {
                     id: shortid.generate(),
                     text: 'Mensaje del Tweet',
-                    picture: 'https://pbs.twimg.com/profile_images/937890303029149696/B4e405AH_400x400.jpg',
+                    picture: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
                     displayName: 'FredyHenao',
                     username: 'FredyH',
                     date: Date.now()

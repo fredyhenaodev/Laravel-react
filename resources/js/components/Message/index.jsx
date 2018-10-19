@@ -1,30 +1,38 @@
 import React, {Component} from 'react';
 import Moment from 'react-moment';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default class Message extends Component {
+import Styles from '../../assets/jss/components/message';
+import injectSheet from "react-jss";
+
+
+class Message extends Component {
     constructor(props) {
         super(props)
     }
 
     render() {
-        let dateFormat = this.props.date
+        const {classes} = this.props;
+        let dateFormat = this.props.date;
         return (
-            <div key={msg.id}>
-                <div>
+            <div className={classes.root}>
+                <div className={classes.user}>
                     <figure>
-                        <img src={this.props.picture}/>
+                        <img className={classes.avatar} src={this.props.picture}/>
                     </figure>
-                    <span>{this.props.displayName}</span>
-                    <span>{this.props.username}</span>
-                    <Moment>{dateFormat}</Moment>
+                    <span className={classes.displayName}>{this.props.displayName}</span>
+                    <span className={classes.username}>{this.props.username}</span>
+                    <span className={classes.date}><Moment fromNow>{dateFormat}</Moment></span>
                 </div>
-                <h3>{this.props.text}</h3>
-                <div>
-                    <span className='fa fa-reply'></span>
-                    <span className='fa fa-retweet'></span>
-                    <span className='fa fa-star'></span>
+                <h3 className={classes.text}>{this.props.text}</h3>
+                <div className={classes.button}>
+                    <div className={classes.icon}><FontAwesomeIcon icon="reply" /></div>
+                    <div className={classes.icon}><FontAwesomeIcon icon="retweet" /></div>
+                    <div className={classes.icon}><FontAwesomeIcon icon="star" /></div>
                 </div>
             </div>
         )
     }
 }
+
+export default injectSheet(Styles)(Message);

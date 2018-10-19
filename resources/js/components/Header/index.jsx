@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import Styles from './header.css';
+import Styles from '../../assets/jss/components/header';
 // Import React-JSS
 import injectSheet from 'react-jss'
 
-export default class Header extends Component{
+
+class Header extends Component{
     render(){
+        const {classes} = this.props;
         return(
-            <header className={Styles.root}>
-                <h1 className={Styles.logo}>Fredy</h1>
+            <header className={classes.root}>
+                <h1 className={classes.logo}>Fredy</h1>
             </header>
         );
     }
 }
+
+export default injectSheet(Styles)(Header);
