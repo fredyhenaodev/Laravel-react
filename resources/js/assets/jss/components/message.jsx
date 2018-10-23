@@ -2,7 +2,8 @@ const styles = {
     root: {
         backgroundColor: "#fff",
         border: "1px solid #ccc",
-        borderRadius: "0.5em",
+        borderRadius: "5px",
+        margin: "0.5em",
         padding: "1em",
     },
     text: {

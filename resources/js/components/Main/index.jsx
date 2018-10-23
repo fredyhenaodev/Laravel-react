@@ -15,6 +15,14 @@ export default class Main extends Component {
                     displayName: 'FredyHenao',
                     username: 'FredyH',
                     date: Date.now()
+                },
+                {
+                    id: shortid.generate(),
+                    text: 'Este es un Nuevo Mensaje',
+                    picture: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
+                    displayName: 'FredyHenao',
+                    username: 'FredyH',
+                    date: Date.now() - 1800000
                 }
             ]
         }

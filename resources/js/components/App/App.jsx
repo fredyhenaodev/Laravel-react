@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Header from "../Header";
 import Main from '../Main';
+import 'normalize-css';
 
 export default class App extends Component{
     constructor(){

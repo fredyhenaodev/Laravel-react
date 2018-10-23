@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
 import Message from '../Message';
+import Styles from '../../assets/jss/components/message-list';
+import injectSheet from "react-jss";
 
-export default class MessageList extends Component {
+class MessageList extends Component {
     constructor(props) {
         super(props)
     }
 
     render() {
+        const {classes} = this.props;
         return (
-            <div>
+            <div className={classes.root}>
                 {this.props.messages.map((msg) => {
                     return (
                         <Message
@@ -25,3 +28,5 @@ export default class MessageList extends Component {
         )
     }
 }
+
+export default injectSheet(Styles)(MessageList);
