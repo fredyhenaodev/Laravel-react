@@ -31,13 +31,13 @@ export default class Main extends Component {
         }
     }
 
-    handleOpenText(event)
+    handleOpenText (event)
     {
         event.preventDefault();
         this.setState({ openText: true });
     }
 
-    renderOpenText()
+    renderOpenText ()
     {
         if(this.state.openText)
         {
@@ -45,15 +45,16 @@ export default class Main extends Component {
         }
     }
 
-    render() {
+    render(){
         return (
             <div>
                 <ProfileBar
                     picture={this.props.user.photoURL}
                     username={this.props.user.email.split('@')[0]}
-                    onOpenText={this.handleOpenText}
+                    onOpenText={this.handleOpenText.bind(this)}
                 />
-                {this.renderOpenText}
+
+                {this.renderOpenText()}
                 <MessageList messages={this.state.messages}></MessageList>
             </div>
         );

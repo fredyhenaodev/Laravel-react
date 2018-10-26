@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Styles from '../../assets/jss/components/profilebar';
 import injectSheet from 'react-jss';
 
-export default class ProfileBar extends Component{
-    constructor(){
-        super();
-    }
-
+class ProfileBar extends Component{
     render(){
         const {classes} = this.props;
         return(
@@ -17,10 +14,12 @@ export default class ProfileBar extends Component{
                 <span className={classes.username}>Hola @{this.props.username}</span>
                 <button onClick={this.props.onOpenText} className={classes.button}>
                     <div>
-                        <FontAwesomeIcon icon={faEdit}/> Tweet!
+                        <FontAwesomeIcon icon="edit"/> Tweet!
                     </div>
                 </button>
             </div>
         )
     }
 }
+
+export default injectSheet(Styles)(ProfileBar)
