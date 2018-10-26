@@ -12,9 +12,9 @@ require('./bootstrap');
  */
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faReply,faRetweet,faStar } from '@fortawesome/free-solid-svg-icons'
+import { faReply,faRetweet,faStar,faEdit } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faReply,faRetweet,faStar)
+library.add(faReply,faRetweet,faStar,faEdit)
 
 /**
  * Next, we will create a fresh React component instance and attach it to

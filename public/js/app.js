@@ -34038,7 +34038,7 @@ __webpack_require__(167);
 
 
 
-__WEBPACK_IMPORTED_MODULE_0__fortawesome_fontawesome_svg_core__["b" /* library */].add(__WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["a" /* faReply */], __WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["b" /* faRetweet */], __WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["c" /* faStar */]);
+__WEBPACK_IMPORTED_MODULE_0__fortawesome_fontawesome_svg_core__["b" /* library */].add(__WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["b" /* faReply */], __WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["c" /* faRetweet */], __WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["d" /* faStar */], __WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["a" /* faEdit */]);
 
 /**
  * Next, we will create a fresh React component instance and attach it to
@@ -56507,7 +56507,7 @@ module.exports = function spread(callback) {
 /* unused harmony export faDrumstickBite */
 /* unused harmony export faDumbbell */
 /* unused harmony export faDungeon */
-/* unused harmony export faEdit */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return faEdit; });
 /* unused harmony export faEject */
 /* unused harmony export faEllipsisH */
 /* unused harmony export faEllipsisV */
@@ -56861,9 +56861,9 @@ module.exports = function spread(callback) {
 /* unused harmony export faRedo */
 /* unused harmony export faRedoAlt */
 /* unused harmony export faRegistered */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return faReply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return faReply; });
 /* unused harmony export faReplyAll */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return faRetweet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return faRetweet; });
 /* unused harmony export faRibbon */
 /* unused harmony export faRing */
 /* unused harmony export faRoad */
@@ -56945,7 +56945,7 @@ module.exports = function spread(callback) {
 /* unused harmony export faSquareFull */
 /* unused harmony export faSquareRootAlt */
 /* unused harmony export faStamp */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return faStar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return faStar; });
 /* unused harmony export faStarAndCrescent */
 /* unused harmony export faStarHalf */
 /* unused harmony export faStarHalfAlt */
@@ -84984,6 +84984,7 @@ exports['default'] = function (Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__MessageList__ = __webpack_require__(254);
 throw new Error("Cannot find module \"../InputText\"");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ProfileBar__ = __webpack_require__(278);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84991,6 +84992,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -85046,7 +85048,7 @@ var Main = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ProfileBar, {
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__ProfileBar__["a" /* default */], {
                     picture: this.props.user.photoURL,
                     username: this.props.user.email.split('@')[0],
                     onOpenText: this.handleOpenText
@@ -86347,6 +86349,79 @@ module.exports = "/*! normalize.css v2.1.3 | MIT License | git.io/normalize */\n
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__fortawesome_react_fontawesome__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_jss__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_jss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_jss__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var ProfileBar = function (_Component) {
+    _inherits(ProfileBar, _Component);
+
+    function ProfileBar() {
+        _classCallCheck(this, ProfileBar);
+
+        return _possibleConstructorReturn(this, (ProfileBar.__proto__ || Object.getPrototypeOf(ProfileBar)).call(this));
+    }
+
+    _createClass(ProfileBar, [{
+        key: 'render',
+        value: function render() {
+            var classes = this.props.classes;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: classes.root },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'figure',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { className: classes.avatar, src: this.props.picture })
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'span',
+                    { className: classes.username },
+                    'Hola @',
+                    this.props.username
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'button',
+                    { onClick: this.props.onOpenText, className: classes.button },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        null,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__fortawesome_react_fontawesome__["a" /* FontAwesomeIcon */], { icon: faEdit }),
+                        ' Tweet!'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return ProfileBar;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (ProfileBar);
 
 /***/ })
 /******/ ]);
