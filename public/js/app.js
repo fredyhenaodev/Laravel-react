@@ -86004,6 +86004,9 @@ var styles = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__assets_jss_components_input_text__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_jss__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_jss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_jss__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -86012,6 +86015,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+
+
+// Import React-JSS
 
 
 var InputText = function (_Component) {
@@ -86026,10 +86032,26 @@ var InputText = function (_Component) {
     _createClass(InputText, [{
         key: 'render',
         value: function render() {
+            var classes = this.props.classes;
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                'InputText'
+                'form',
+                { className: classes.form, onSubmit: this.props.onSendText },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: classes.text, name: 'text' }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { className: classes.buttons },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { className: classes.close, onClick: this.props.onCloseText },
+                        'Cerrar'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'button',
+                        { className: classes.send, type: 'submit' },
+                        'Enviar'
+                    )
+                )
             );
         }
     }]);
@@ -86037,7 +86059,7 @@ var InputText = function (_Component) {
     return InputText;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
-/* harmony default export */ __webpack_exports__["a"] = (InputText);
+/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_2_react_jss___default()(__WEBPACK_IMPORTED_MODULE_1__assets_jss_components_input_text__["a" /* default */])(InputText));
 
 /***/ }),
 /* 262 */
@@ -86492,6 +86514,46 @@ module.exports = "/*! normalize.css v2.1.3 | MIT License | git.io/normalize */\n
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var styles = {
+    text: {
+        borderRadius: '5px',
+        border: '1px solid #ddd',
+        width: '90%',
+        height: '5em',
+        padding: '0.75em',
+        margin: '1em 0.5em'
+    },
+    buttons: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        '> button': {
+            borderRadius: '5px',
+            padding: '0.5em 0.75em',
+            margin: '0.25em'
+        }
+    },
+    close: {
+        backgroundColor: '#fff',
+        border: '1px solid #ddd'
+    },
+    send: {
+        backgroundColor: '#2d84cc',
+        border: '1px solid #226aa6',
+        color: '#fff'
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (styles);
 
 /***/ })
 /******/ ]);
