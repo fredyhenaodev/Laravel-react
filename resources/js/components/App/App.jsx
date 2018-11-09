@@ -11,7 +11,8 @@ export default class App extends Component{
             user:{
                 photoURL: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
                 email: 'fredy@gmail.com',
-                onOpenText: false
+                onOpenText: false,
+                displayName: 'Fredy Henao'
             }
         }
     }

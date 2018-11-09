@@ -59287,7 +59287,8 @@ var App = function (_Component) {
             user: {
                 photoURL: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
                 email: 'fredy@gmail.com',
-                onOpenText: false
+                onOpenText: false,
+                displayName: 'Fredy Henao'
             }
         };
         return _this;
@@ -85471,10 +85472,14 @@ var Main = function (_Component) {
                 id: shortid.generate(),
                 username: this.props.user.email.split('@')[0],
                 displayName: this.props.user.displayName,
+                picture: this.props.user.photoURL,
                 date: Date.now(),
                 text: event.target.text.value
             };
-            console.log(newMessage);
+            this.setState({
+                messages: this.state.messages.concat(newMessage),
+                openText: false
+            });
         }
     }, {
         key: 'handleCloseText',
@@ -85564,7 +85569,7 @@ var MessageList = function (_Component) {
                         username: msg.username,
                         date: msg.date
                     });
-                })
+                }).reverse()
             );
         }
     }]);
