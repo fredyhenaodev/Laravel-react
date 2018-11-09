@@ -29,29 +29,52 @@ export default class Main extends Component {
                 }
             ]
         }
+
+        this.handleSendText = this.handleSendText.bind(this);
+        this.handleCloseText = this.handleCloseText.bind(this);
+        this.handleOpenText = this.handleOpenText.bind(this);
     }
 
-    handleOpenText (event)
-    {
+    handleOpenText(event) {
         event.preventDefault();
-        this.setState({ openText: true });
+        this.setState({openText: true});
     }
 
-    renderOpenText ()
-    {
-        if(this.state.openText)
-        {
-            return <InputText />
+    handleSendText(event) {
+        event.preventDefault();
+        let newMessage = {
+            id: shortid.generate(),
+            username: this.props.user.email.split('@')[0],
+            displayName: this.props.user.displayName,
+            date: Date.now(),
+            text: event.target.text.value
+        }
+        console.log(newMessage);
+    }
+
+    handleCloseText(event) {
+        event.preventDefault();
+        this.setState({openText: false});
+    }
+
+    renderOpenText() {
+        if (this.state.openText) {
+            return (
+                <InputText
+                    onSendText={this.handleSendText}
+                    onCloseText={this.handleCloseText}
+                />
+            )
         }
     }
 
-    render(){
+    render() {
         return (
             <div>
                 <ProfileBar
                     picture={this.props.user.photoURL}
                     username={this.props.user.email.split('@')[0]}
-                    onOpenText={this.handleOpenText.bind(this)}
+                    onOpenText={this.handleOpenText}
                 />
 
                 {this.renderOpenText()}
