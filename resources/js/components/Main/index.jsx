@@ -17,7 +17,9 @@ export default class Main extends Component {
                     picture: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
                     displayName: 'FredyHenao',
                     username: 'FredyH',
-                    date: Date.now()
+                    date: Date.now(),
+                    retweets: 0,
+                    favorites: 0
                 },
                 {
                     id: shortid.generate(),
@@ -25,7 +27,9 @@ export default class Main extends Component {
                     picture: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
                     displayName: 'FredyHenao',
                     username: 'FredyH',
-                    date: Date.now() - 1800000
+                    date: Date.now() - 1800000,
+                    retweets: 0,
+                    favorites: 0
                 }
             ]
         }
@@ -61,6 +65,14 @@ export default class Main extends Component {
         this.setState({openText: false});
     }
 
+    handleRetweet (){
+
+    }
+
+    handleFavorite (){
+        
+    }
+
     renderOpenText() {
         if (this.state.openText) {
             return (
@@ -82,7 +94,11 @@ export default class Main extends Component {
                 />
 
                 {this.renderOpenText()}
-                <MessageList messages={this.state.messages}></MessageList>
+                <MessageList
+                    messages={this.state.messages}
+                    onRetweet={this.handleRetweet}
+                    onFavorite={this.handleFavorite}
+                ></MessageList>
             </div>
         );
     }

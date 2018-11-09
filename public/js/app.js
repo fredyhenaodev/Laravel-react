@@ -85441,14 +85441,18 @@ var Main = function (_Component) {
                 picture: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
                 displayName: 'FredyHenao',
                 username: 'FredyH',
-                date: Date.now()
+                date: Date.now(),
+                retweets: 0,
+                favorites: 0
             }, {
                 id: shortid.generate(),
                 text: 'Este es un Nuevo Mensaje',
                 picture: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
                 displayName: 'FredyHenao',
                 username: 'FredyH',
-                date: Date.now() - 1800000
+                date: Date.now() - 1800000,
+                retweets: 0,
+                favorites: 0
             }]
         };
 
@@ -85488,6 +85492,12 @@ var Main = function (_Component) {
             this.setState({ openText: false });
         }
     }, {
+        key: 'handleRetweet',
+        value: function handleRetweet() {}
+    }, {
+        key: 'handleFavorite',
+        value: function handleFavorite() {}
+    }, {
         key: 'renderOpenText',
         value: function renderOpenText() {
             if (this.state.openText) {
@@ -85509,7 +85519,11 @@ var Main = function (_Component) {
                     onOpenText: this.handleOpenText
                 }),
                 this.renderOpenText(),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__MessageList__["a" /* default */], { messages: this.state.messages })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__MessageList__["a" /* default */], {
+                    messages: this.state.messages,
+                    onRetweet: this.handleRetweet,
+                    onFavorite: this.handleFavorite
+                })
             );
         }
     }]);
@@ -85549,12 +85563,18 @@ var MessageList = function (_Component) {
     function MessageList(props) {
         _classCallCheck(this, MessageList);
 
-        return _possibleConstructorReturn(this, (MessageList.__proto__ || Object.getPrototypeOf(MessageList)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (MessageList.__proto__ || Object.getPrototypeOf(MessageList)).call(this, props));
+
+        _this.onRetweet = _this.onRetweet.bind(_this);
+        _this.onFavorite = _this.onFavorite.bind(_this);
+        return _this;
     }
 
     _createClass(MessageList, [{
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             var classes = this.props.classes;
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -85567,7 +85587,15 @@ var MessageList = function (_Component) {
                         picture: msg.picture,
                         displayName: msg.displayName,
                         username: msg.username,
-                        date: msg.date
+                        date: msg.date,
+                        numRetweets: msg.retweets,
+                        numFavorites: msg.favorites,
+                        onRetweet: function onRetweet() {
+                            return _this2.props.onRetweet(msg.id);
+                        },
+                        onFavorite: function onFavorite() {
+                            return _this2.props.onFavorite(msg.id);
+                        }
                     });
                 }).reverse()
             );
@@ -85613,10 +85641,34 @@ var Message = function (_Component) {
     function Message(props) {
         _classCallCheck(this, Message);
 
-        return _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Message.__proto__ || Object.getPrototypeOf(Message)).call(this, props));
+
+        _this.state = {
+            pressFavorite: false,
+            pressRetweet: false
+        };
+        _this.onPressRetweet = _this.onPressRetweet.bind(_this);
+        _this.onPressFavorite = _this.onPressFavorite.bind(_this);
+        return _this;
     }
 
     _createClass(Message, [{
+        key: 'onPressRetweet',
+        value: function onPressRetweet() {
+            this.props.onFavorite();
+            this.setState({
+                pressRetweet: true
+            });
+        }
+    }, {
+        key: 'onPressFavorite',
+        value: function onPressFavorite() {
+            this.props.onRetweet();
+            this.setState({
+                pressFavorite: true
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             var classes = this.props.classes;
@@ -85668,13 +85720,29 @@ var Message = function (_Component) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: classes.icon },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__fortawesome_react_fontawesome__["a" /* FontAwesomeIcon */], { icon: 'retweet' })
+                        {
+                            className: this.props.pressRetweet ? classes.rtGreen : '',
+                            onClick: this.onPressRetweet
+                        },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__fortawesome_react_fontawesome__["a" /* FontAwesomeIcon */], { icon: 'retweet' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: classes.num },
+                            this.props.numRetweets
+                        )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
-                        { className: classes.icon },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__fortawesome_react_fontawesome__["a" /* FontAwesomeIcon */], { icon: 'star' })
+                        {
+                            className: this.props.pressFavorite ? classes.fvYellow : '',
+                            onClick: this.onPressFavorite
+                        },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__fortawesome_react_fontawesome__["a" /* FontAwesomeIcon */], { icon: 'star' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: classes.num },
+                            this.props.numFavorites
+                        )
                     )
                 )
             );
@@ -86010,6 +86078,17 @@ var styles = {
     },
     icon: {
         marginRight: "3em"
+    },
+    num: {
+        fontSize: '10pts',
+        marginRight: '3em',
+        marginLeft: '0.25em'
+    },
+    rtGreen: {
+        color: '#20833f'
+    },
+    fvYellow: {
+        color: '#e2c400'
     }
 };
 

@@ -38,6 +38,17 @@ const styles = {
     },
     icon: {
         marginRight: "3em"
+    },
+    num:{
+        fontSize: '10pts',
+        marginRight: '3em',
+        marginLeft: '0.25em'
+    },
+    rtGreen:{
+        color: '#20833f'
+    },
+    fvYellow:{
+        color: '#e2c400'
     }
 }
 
