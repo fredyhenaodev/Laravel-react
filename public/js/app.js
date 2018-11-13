@@ -85428,12 +85428,13 @@ var shortid = __webpack_require__(265);
 var Main = function (_Component) {
     _inherits(Main, _Component);
 
-    function Main() {
+    function Main(props) {
         _classCallCheck(this, Main);
 
-        var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
+        var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
         _this.state = {
+            user: Object.assign({}, _this.props.user, { retweets: [] }, { favorites: [] }),
             openText: false,
             messages: [{
                 id: shortid.generate(),
@@ -85459,6 +85460,8 @@ var Main = function (_Component) {
         _this.handleSendText = _this.handleSendText.bind(_this);
         _this.handleCloseText = _this.handleCloseText.bind(_this);
         _this.handleOpenText = _this.handleOpenText.bind(_this);
+        _this.handleFavorite = _this.handleFavorite.bind(_this);
+        _this.handleRetweet = _this.handleRetweet.bind(_this);
         return _this;
     }
 
@@ -85478,7 +85481,9 @@ var Main = function (_Component) {
                 displayName: this.props.user.displayName,
                 picture: this.props.user.photoURL,
                 date: Date.now(),
-                text: event.target.text.value
+                text: event.target.text.value,
+                retweets: 0,
+                favorites: 0
             };
             this.setState({
                 messages: this.state.messages.concat(newMessage),
@@ -85493,10 +85498,48 @@ var Main = function (_Component) {
         }
     }, {
         key: 'handleRetweet',
-        value: function handleRetweet() {}
+        value: function handleRetweet(msgId) {
+            var alreadyRetweet = this.state.user.retweets.filter(function (rt) {
+                return rt === msgId;
+            });
+            if (alreadyRetweet.length === 0) {
+                var messages = this.state.messages.map(function (msg) {
+                    if (msg.id === msgId) {
+                        msg.retweets++;
+                    }
+                    return msg;
+                });
+                var user = Object.assign({}, this.state.user);
+                user.retweets.push(msgId);
+
+                this.setState({
+                    messages: messages,
+                    user: user
+                });
+            }
+        }
     }, {
         key: 'handleFavorite',
-        value: function handleFavorite() {}
+        value: function handleFavorite(msgId) {
+            var alreadyFavorited = this.state.user.favorites.filter(function (fav) {
+                return fav === msgId;
+            });
+            if (alreadyFavorited.length === 0) {
+                var messages = this.state.messages.map(function (msg) {
+                    if (msg.id === msgId) {
+                        msg.favorites++;
+                    }
+                    return msg;
+                });
+                var user = Object.assign({}, this.state.user);
+                user.favorites.push(msgId);
+
+                this.setState({
+                    messages: messages,
+                    user: user
+                });
+            }
+        }
     }, {
         key: 'renderOpenText',
         value: function renderOpenText() {
@@ -85563,11 +85606,7 @@ var MessageList = function (_Component) {
     function MessageList(props) {
         _classCallCheck(this, MessageList);
 
-        var _this = _possibleConstructorReturn(this, (MessageList.__proto__ || Object.getPrototypeOf(MessageList)).call(this, props));
-
-        _this.onRetweet = _this.onRetweet.bind(_this);
-        _this.onFavorite = _this.onFavorite.bind(_this);
-        return _this;
+        return _possibleConstructorReturn(this, (MessageList.__proto__ || Object.getPrototypeOf(MessageList)).call(this, props));
     }
 
     _createClass(MessageList, [{
@@ -85655,7 +85694,7 @@ var Message = function (_Component) {
     _createClass(Message, [{
         key: 'onPressRetweet',
         value: function onPressRetweet() {
-            this.props.onFavorite();
+            this.props.onRetweet();
             this.setState({
                 pressRetweet: true
             });
@@ -85663,7 +85702,7 @@ var Message = function (_Component) {
     }, {
         key: 'onPressFavorite',
         value: function onPressFavorite() {
-            this.props.onRetweet();
+            this.props.onFavorite();
             this.setState({
                 pressFavorite: true
             });
@@ -85721,27 +85760,27 @@ var Message = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         {
-                            className: this.props.pressRetweet ? classes.rtGreen : '',
-                            onClick: this.onPressRetweet
+                            className: this.state.pressFavorite ? classes.rtGreen : '',
+                            onClick: this.onPressFavorite
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__fortawesome_react_fontawesome__["a" /* FontAwesomeIcon */], { icon: 'retweet' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: classes.num },
-                            this.props.numRetweets
+                            this.props.numFavorites
                         )
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         {
-                            className: this.props.pressFavorite ? classes.fvYellow : '',
-                            onClick: this.onPressFavorite
+                            className: this.state.pressRetweet ? classes.fvYellow : '',
+                            onClick: this.onPressRetweet
                         },
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__fortawesome_react_fontawesome__["a" /* FontAwesomeIcon */], { icon: 'star' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             'span',
                             { className: classes.num },
-                            this.props.numFavorites
+                            this.props.numRetweets
                         )
                     )
                 )

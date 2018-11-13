@@ -49,7 +49,7 @@ const styles = {
     },
     fvYellow:{
         color: '#e2c400'
-    }
+    },
 }
 
 export default styles;
