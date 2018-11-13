@@ -45,7 +45,10 @@ class Message extends Component {
                     <span className={classes.date}><Moment fromNow>{dateFormat}</Moment></span>
                 </div>
                 <h3 className={classes.text}>{this.props.text}</h3>
-                <div className={classes.button}>
+                <div
+                    className={classes.button}
+                    onClick={this.props.onReplyTweet}
+                >
                     <div className={classes.icon}>
                         <FontAwesomeIcon icon="reply" />
                     </div>

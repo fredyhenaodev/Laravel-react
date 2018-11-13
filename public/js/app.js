@@ -85436,6 +85436,7 @@ var Main = function (_Component) {
         _this.state = {
             user: Object.assign({}, _this.props.user, { retweets: [] }, { favorites: [] }),
             openText: false,
+            userNameToReply: '',
             messages: [{
                 id: shortid.generate(),
                 text: 'Mensaje del Tweet',
@@ -85462,6 +85463,7 @@ var Main = function (_Component) {
         _this.handleOpenText = _this.handleOpenText.bind(_this);
         _this.handleFavorite = _this.handleFavorite.bind(_this);
         _this.handleRetweet = _this.handleRetweet.bind(_this);
+        _this.handleReplyRetweet = _this.handleReplyRetweet.bind(_this);
         return _this;
     }
 
@@ -85541,12 +85543,21 @@ var Main = function (_Component) {
             }
         }
     }, {
+        key: 'handleReplyRetweet',
+        value: function handleReplyRetweet(msgId, userNameToReply) {
+            this.setState({
+                openText: true,
+                userNameToReply: userNameToReply
+            });
+        }
+    }, {
         key: 'renderOpenText',
         value: function renderOpenText() {
             if (this.state.openText) {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__InputText__["a" /* default */], {
                     onSendText: this.handleSendText,
-                    onCloseText: this.handleCloseText
+                    onCloseText: this.handleCloseText,
+                    userNameToReply: this.state.userNameToReply
                 });
             }
         }
@@ -85565,7 +85576,8 @@ var Main = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__MessageList__["a" /* default */], {
                     messages: this.state.messages,
                     onRetweet: this.handleRetweet,
-                    onFavorite: this.handleFavorite
+                    onFavorite: this.handleFavorite,
+                    onReplyTweet: this.handleReplyRetweet
                 })
             );
         }
@@ -85634,6 +85646,9 @@ var MessageList = function (_Component) {
                         },
                         onFavorite: function onFavorite() {
                             return _this2.props.onFavorite(msg.id);
+                        },
+                        onReplyTweet: function onReplyTweet() {
+                            return _this2.props.onReplyTweet(msg.id, msg.username);
                         }
                     });
                 }).reverse()
@@ -85751,7 +85766,10 @@ var Message = function (_Component) {
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: classes.button },
+                    {
+                        className: classes.button,
+                        onClick: this.props.onReplyTweet
+                    },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { className: classes.icon },
@@ -86186,7 +86204,7 @@ var InputText = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'form',
                 { className: classes.form, onSubmit: this.props.onSendText },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: classes.text, name: 'text' }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: classes.text, name: 'text', defaultValue: this.props.userNameToReply ? '@' + this.props.userNameToReply : '' }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     { className: classes.buttons },
