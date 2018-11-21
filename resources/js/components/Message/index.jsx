@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import Moment from 'react-moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -34,12 +35,15 @@ class Message extends Component {
     render() {
         const {classes} = this.props;
         let dateFormat = this.props.date;
+        let userLink = `/user/${this.props.username}`;
         return (
             <div className={classes.root}>
                 <div className={classes.user}>
-                    <figure>
-                        <img className={classes.avatar} src={this.props.picture}/>
-                    </figure>
+                    <Link to={userLink}>
+                        <figure>
+                            <img className={classes.avatar} src={this.props.picture}/>
+                        </figure>
+                    </Link>
                     <span className={classes.displayName}>{this.props.displayName}</span>
                     <span className={classes.username}>{this.props.username}</span>
                     <span className={classes.date}><Moment fromNow>{dateFormat}</Moment></span>
