@@ -10,7 +10,7 @@ const styles = {
     buttons: {
         display: 'flex',
         justifyContent: 'flex-end',
-        '> button': {
+        'button':{
             borderRadius: '5px',
             padding: '0.5em 0.75em',
             margin: '0.25em'
@@ -20,7 +20,7 @@ const styles = {
         backgroundColor: '#fff',
         border: '1px solid #ddd'
     },
-    send:{
+    send: {
         backgroundColor: '#2d84cc',
         border: '1px solid #226aa6',
         color: '#fff'
