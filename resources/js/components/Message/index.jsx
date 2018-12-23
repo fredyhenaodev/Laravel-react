@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import Moment from 'react-moment';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, {Component } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from "react-router-dom"
+import Moment from 'react-moment'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import Styles from '../../assets/jss/components/message';
-import injectSheet from "react-jss";
-
+import Styles from '../../assets/jss/components/message'
+import injectSheet from "react-jss"
 
 class Message extends Component {
     constructor(props) {
@@ -33,9 +33,9 @@ class Message extends Component {
     }
 
     render() {
-        const {classes} = this.props;
-        let dateFormat = this.props.date;
-        let userLink = `/user/${this.props.username}`;
+        const {classes} = this.props
+        let dateFormat = this.props.date
+        let userLink = `/user/${this.props.username}`
         return (
             <div className={classes.root}>
                 <div className={classes.user}>
@@ -76,4 +76,18 @@ class Message extends Component {
     }
 }
 
-export default injectSheet(Styles)(Message);
+Message.proptypes = {
+    onRetweet: PropTypes.func.isRequired,
+    onReplyTweet: PropTypes.func.isRequired,
+    onFavorite: PropTypes.func.isRequired,
+    date: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    numFavorites: PropTypes.number.isRequired,
+    numRetweets: PropTypes.number.isRequired,
+    classes: PropTypes.object.isRequired
+}
+
+export default injectSheet(Styles)(Message)

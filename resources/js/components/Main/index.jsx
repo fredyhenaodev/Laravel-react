@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import MessageList from '../MessageList';
-import InputText from '../InputText';
-import ProfileBar from '../ProfileBar';
+import React, {Component} from 'react'
+import MessageList from '../MessageList'
+import InputText from '../InputText'
+import ProfileBar from '../ProfileBar'
 
-var shortid = require('shortid');
+var shortid = require('shortid')
 export default class Main extends Component {
 
     constructor(props) {
@@ -36,21 +36,21 @@ export default class Main extends Component {
             ]
         }
 
-        this.handleSendText = this.handleSendText.bind(this);
-        this.handleCloseText = this.handleCloseText.bind(this);
-        this.handleOpenText = this.handleOpenText.bind(this);
-        this.handleFavorite = this.handleFavorite.bind(this);
-        this.handleRetweet = this.handleRetweet.bind(this);
-        this.handleReplyRetweet = this.handleReplyRetweet.bind(this);
+        this.handleSendText = this.handleSendText.bind(this)
+        this.handleCloseText = this.handleCloseText.bind(this)
+        this.handleOpenText = this.handleOpenText.bind(this)
+        this.handleFavorite = this.handleFavorite.bind(this)
+        this.handleRetweet = this.handleRetweet.bind(this)
+        this.handleReplyRetweet = this.handleReplyRetweet.bind(this)
     }
 
     handleOpenText(event) {
-        event.preventDefault();
-        this.setState({openText: true});
+        event.preventDefault()
+        this.setState({openText: true})
     }
 
     handleSendText(event) {
-        event.preventDefault();
+        event.preventDefault()
         let newMessage = {
             id: shortid.generate(),
             username: this.props.user.email.split('@')[0],
@@ -68,21 +68,21 @@ export default class Main extends Component {
     }
 
     handleCloseText(event) {
-        event.preventDefault();
-        this.setState({openText: false});
+        event.preventDefault()
+        this.setState({openText: false})
     }
 
     handleRetweet(msgId) {
-        let alreadyRetweet = this.state.user.retweets.filter(rt => rt === msgId);
+        let alreadyRetweet = this.state.user.retweets.filter(rt => rt === msgId)
         if (alreadyRetweet.length === 0) {
             let messages = this.state.messages.map(msg => {
                 if (msg.id === msgId) {
-                    msg.retweets++;
+                    msg.retweets++
                 }
-                return msg;
+                return msg
             })
-            let user = Object.assign({}, this.state.user);
-            user.retweets.push(msgId);
+            let user = Object.assign({}, this.state.user)
+            user.retweets.push(msgId)
 
             this.setState({
                 messages,

@@ -1,5 +1,5 @@
-import React from 'react';
-import Styles from '../../assets/jss/components/header';
+import React from 'react'
+import Styles from '../../assets/jss/components/header'
 // Import React-JSS
 import injectSheet from 'react-jss'
 
@@ -10,4 +10,4 @@ const Header = ({classes}) => (
     </header>
 )
 
-export default injectSheet(Styles)(Header);
+export default injectSheet(Styles)(Header)

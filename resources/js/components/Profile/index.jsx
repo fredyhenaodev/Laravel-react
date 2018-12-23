@@ -1,33 +1,35 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PropTypes from 'prop-types'
 
-import Styles from '../../assets/jss/components/profile';
-import injectSheet from "react-jss";
+import Styles from '../../assets/jss/components/profile'
+import injectSheet from "react-jss"
 
-class Profile extends Component{
-    constructor (props){
-        super(props)
-    }
-    render(){
-        const {classes} = this.props;
-        return(
-            <div className={classes.root}>
-                <img className={classes.avatar}  src={this.props.picture}/>
-                <span className={classes.name}>{this.props.displayName}</span>
-                <ul className={classes.data}>
-                    <li>
-                        <FontAwesomeIcon icon="user" /><span>{this.props.username}</span>
-                    </li>
-                    <li>
-                        <FontAwesomeIcon icon="envelope" /><span>{this.props.emailAddress}</span>
-                    </li>
-                    <li>
-                        <FontAwesomeIcon icon="map-marked" /><span>{this.props.location}</span>
-                    </li>
-                </ul>
-            </div>
-        )
-    }
+const Profile = ({classes, picture, displayName, username, emailAddress, location}) => (
+    <div className={classes.root}>
+        <img className={classes.avatar}  src={picture}/>
+        <span className={classes.name}>{displayName}</span>
+        <ul className={classes.data}>
+            <li>
+                <FontAwesomeIcon icon="user" /><span>{username}</span>
+            </li>
+            <li>
+                <FontAwesomeIcon icon="envelope" /><span>{emailAddress}</span>
+            </li>
+            <li>
+                <FontAwesomeIcon icon="map-marked" /><span>{location}</span>
+            </li>
+        </ul>
+    </div>
+)
+
+Profile.proptypes = {
+    classes: PropTypes.object.isRequired,
+    picture: PropTypes.string.isRequired,
+    displayName: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    emailAddress: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired
 }
 
-export default injectSheet(Styles)(Profile);
+export default injectSheet(Styles)(Profile)
