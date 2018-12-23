@@ -9,7 +9,7 @@ class Header extends Component{
         const {classes} = this.props;
         return(
             <header className={classes.root}>
-                <h1 className={classes.logo}>Fredy</h1>
+                <h1 className={classes.logo}>React</h1>
             </header>
         );
     }

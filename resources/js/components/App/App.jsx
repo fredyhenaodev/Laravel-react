@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Header from "../Header";
 import Profile from "../Profile";
 import Main from '../Main';
+import Login from '../Login';
 import 'normalize-css';
 
 export default class App extends Component {
@@ -18,6 +19,11 @@ export default class App extends Component {
                 location: 'Colombia'
             }
         }
+        this.handleOnAuth = this.handleOnAuth.bind(this)
+    }
+
+    handleOnAuth() {
+        console.log('Auth')
     }
 
     render() {
@@ -25,17 +31,19 @@ export default class App extends Component {
             <Router>
                 <div>
                     <Header/>
-                    <Route exact path={'/'} render={() => {
+                    <Route exact path="/" render={() => {
                         if (this.state.user) {
                             return (
                                 <Main user={this.state.user}/>
                             )
                         } else {
-                            // Render Login
+                            return (
+                                <Login onAuth={this.handleOnAuth}/>
+                            )
                         }
                     }}/>
 
-                    <Route exact path={'/profile'} render={() =>
+                    <Route exact path="/profile" render={() =>
                         (
                             <Profile
                                 picture={this.state.user.photoURL}
@@ -46,15 +54,14 @@ export default class App extends Component {
                             />
                         )
                     }/>
-                    <Route exact path={'/user/:username'} render={({params}) => {
-                        return (
+                    <Route exact path="/user/:username" render={({match}) =>
+                        (
                             <Profile
-                                username={params.username}
-                                displayName={params.username}
+                                username={match.params.username}
+                                displayName={match.params.username}
                             />
                         )
-                    }}/>
-
+                    }/>
                 </div>
             </Router>
         );
