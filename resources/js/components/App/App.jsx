@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Route} from "react-router-dom"
 import firebase from '@firebase/app'
+import firebaseAuth from '@firebase/auth'
 import ReactDOM from 'react-dom'
 import Header from "../Header"
 import Profile from "../Profile"
@@ -12,19 +13,16 @@ export default class App extends Component {
     constructor() {
         super()
         this.state = {
-            user: {
-                photoURL: 'https://pbs.twimg.com/profile_images/1039065709425221632/vhlKamoy_400x400.jpg',
-                email: 'fredy@gmail.com',
-                onOpenText: false,
-                displayName: 'Fredy Henao',
-                location: 'Colombia'
-            }
+            user: null
         }
         this.handleOnAuth = this.handleOnAuth.bind(this)
     }
 
     handleOnAuth() {
-        console.log('Auth')
+        const provider = new firebaseAuth.auth.GithubAuthProvider()
+        firebaseAuth.auth().signInWithPopup(provider)
+            .then(result => console.log(`${result.user.email} ha iniciado sesión`))
+            .catch(error => console.error(`Error: ${error.code}: ${error.message}`))
     }
 
     render() {

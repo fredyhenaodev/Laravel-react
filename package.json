@@ -1,37 +1,54 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "axios": "^0.18",
-        "babel-preset-react": "^6.23.0",
-        "bootstrap": "^4.0.0",
-        "cross-env": "^5.1",
-        "jquery": "^3.2",
-        "laravel-mix": "^2.0",
-        "lodash": "^4.17.5",
-        "popper.js": "^1.12",
-        "react": "^16.2.0",
-        "react-dom": "^16.2.0"
-    },
-    "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^1.2.6",
-        "@fortawesome/free-solid-svg-icons": "^5.4.1",
-        "@fortawesome/react-fontawesome": "^0.1.3",
-        "imagemin": "^6.0.0",
-        "moment": "^2.22.2",
-        "normalize-css": "^2.3.1",
-        "react-jss": "^8.6.1",
-        "react-moment": "^0.8.1",
-        "react-router": "^4.3.1",
-        "react-router-dom": "^4.3.1",
-        "shortid": "^2.2.13"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "devDependencies": {
+    "axios": "^0.18",
+    "babel-preset-react": "^6.23.0",
+    "bootstrap": "^4.0.0",
+    "cross-env": "^5.1",
+    "jquery": "^3.2",
+    "laravel-mix": "^2.0",
+    "lodash": "^4.17.5",
+    "popper.js": "^1.12",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.6",
+    "@fortawesome/free-solid-svg-icons": "^5.4.1",
+    "@fortawesome/react-fontawesome": "^0.1.3",
+    "imagemin": "^6.0.0",
+    "moment": "^2.22.2",
+    "normalize-css": "^2.3.1",
+    "react-jss": "^8.6.1",
+    "react-moment": "^0.8.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "shortid": "^2.2.13"
+  },
+  "name": "laravel-react",
+  "description": "React, con JSX, tiene una serie de eventos sintéticos que permite abstraerte de los eventos del navegador, de manera que no haya que usar ningún addEventListener u otras librerías como jQuery para tratarlos.",
+  "version": "1.0.0",
+  "main": "webpack.mix.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FredyHenao/Laravel-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FredyHenao/Laravel-react/issues"
+  },
+  "homepage": "https://github.com/FredyHenao/Laravel-react#readme"
 }
