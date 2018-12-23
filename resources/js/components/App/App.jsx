@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Route} from "react-router-dom"
+import firebase from '@firebase/app'
 import ReactDOM from 'react-dom'
 import Header from "../Header"
 import Profile from "../Profile"
@@ -67,6 +68,17 @@ export default class App extends Component {
         );
     }
 }
+
+
+// Initialize Firebase
+firebase.initializeApp({
+    apiKey: "AIzaSyCuBYMNZHj-9y7-BdPPSot0mpptoBVgmd8",
+    authDomain: "laravel-react-aab66.firebaseapp.com",
+    databaseURL: "https://laravel-react-aab66.firebaseio.com",
+    projectId: "laravel-react-aab66",
+    storageBucket: "laravel-react-aab66.appspot.com",
+    messagingSenderId: "698194007439"
+})
 
 if (document.getElementById('app')) {
     ReactDOM.render(<App/>, document.getElementById('app'))
